@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Luana 💛 Nossa História</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+    background: #f5f0e6;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+/* TELA INICIAL */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f5f0e6;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    flex-direction: column;
+    animation: fadeIn 1.5s;
+}
+
+.overlay h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.overlay button {
+    background: #d6bfa5;
+    border: none;
+    padding: 18px 35px;
+    border-radius: 30px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.overlay button:hover {
+    transform: scale(1.1);
+    background: #c4a98a;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* CONTEÚDO */
+h1 {
+    margin-top: 30px;
+    font-size: 2.6em;
+}
+
+p {
+    font-size: 1.2em;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin: 50px;
+}
+
+.card {
+    width: 220px;
+    height: 300px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.8s;
+}
+
+.card.virado .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front, .card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 20px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+
+.card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-back {
+    background: #e7dccb;
+    transform: rotateY(180deg);
+    font-size: 1em;
+}
+
+button {
+    background: #d6bfa5;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+    background: #c4a98a;
+}
+
+.historia {
+    display: none;
+    margin: 40px;
+    font-size: 1.2em;
+}
+
+/* fade do site ao entrar */
+.site {
+    opacity: 0;
+    transition: opacity 1.5s;
+}
+
+.site.mostrar {
+    opacity: 1;
+}
+</style>
+</head>
+
+<body>
+
+<!-- 🎬 TELA DE ENTRADA -->
+<div class="overlay" id="overlay">
+    <h2>Coloque o som 💛</h2>
+    <p>Isso é só pra você</p>
+    <button onclick="iniciarSite()">Entrar na nossa história</button>
+</div>
+
+<!-- 🎵 Música -->
+<audio id="musica" loop>
+    <source src="https://files.catbox.moe/7x8l6k.mp3" type="audio/mpeg">
+</audio>
+
+<!-- 🌸 CONTEÚDO DO SITE -->
+<div class="site" id="site">
+
+<h1>Luana 💛</h1>
+<p>Desde 11/02, escrevendo nossa história juntos</p>
+
+<div class="cards">
+
+    <div class="card" onclick="virar(this)">
+        <div class="card-inner">
+            <div class="card-front">
+                <img src="fotos/foto1.jpg">
+            </div>
+            <div class="card-back">
+                Nosso começo foi simples… mas desde ali eu já sabia que era você 💛
+            </div>
+        </div>
+    </div>
+
+    <div class="card" onclick="virar(this)">
+        <div class="card-inner">
+            <div class="card-front">
+                <img src="fotos/foto2.jpg">
+            </div>
+            <div class="card-back">
+                Cada momento ao seu lado virou memória boa de guardar pra sempre ✨
+            </div>
+        </div>
+    </div>
+
+    <div class="card" onclick="virar(this)">
+        <div class="card-inner">
+            <div class="card-front">
+                <img src="fotos/foto3.jpg">
+            </div>
+            <div class="card-back">
+                Você é meu sorriso fácil, meu abraço seguro e meu lar 🥰
+            </div>
+        </div>
+    </div>
+
+    <div class="card" onclick="virar(this)">
+        <div class="card-inner">
+            <div class="card-front">
+                <img src="fotos/foto4.jpg">
+            </div>
+            <div class="card-back">
+                Três anos… e eu escolheria você em todas as vidas 💫
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<button onclick="mostrarHistoria()">📖 Nossa História</button>
+
+<div class="historia" id="historia">
+    Tudo começou em 11/02.  
+    De lá pra cá, a gente construiu risadas, superou dias difíceis  
+    e descobriu que amor de verdade é parceria, cuidado e escolha diária.  
+    Obrigado por ser você. Sempre 💛
+</div>
+
+</div>
+
+<script>
+function iniciarSite() {
+    document.getElementById("musica").play();
+    document.getElementById("overlay").style.display = "none";
+    document.getElementById("site").classList.add("mostrar");
+}
+
+function virar(card) {
+    card.classList.toggle("virado");
+}
+
+function mostrarHistoria() {
+    const h = document.getElementById("historia");
+    h.style.display = h.style.display === "block" ? "none" : "block";
+}
+</script>
+
+</body>
+</html>
