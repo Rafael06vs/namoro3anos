@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>3 Anos de namoro 💛</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+    background: #f5f0e6;
+    overflow-x: hidden;
+    text-align: center;
+}
+
+h1 {
+    margin-top: 30px;
+    font-size: 2.8em;
+}
+
+p {
+    font-size: 1.2em;
+}
+
+button {
+    background: #d6bfa5;
+    border: none;
+    padding: 15px 25px;
+    margin: 10px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+    background: #c4a98a;
+}
+
+.galeria {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 30px;
+    gap: 20px;
+}
+
+.galeria img {
+    width: 220px;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 20px;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.galeria img:hover {
+    transform: scale(1.1) rotate(2deg);
+}
+
+.mensagem {
+    display: none;
+    font-size: 1.4em;
+    margin: 20px;
+}
+
+.emoji {
+    position: fixed;
+    font-size: 30px;
+    animation: flutuar 6s linear infinite;
+}
+
+@keyframes flutuar {
+    from { transform: translateY(100vh); }
+    to { transform: translateY(-10vh); }
+}
+</style>
+</head>
+
+<body>
+
+<h1>3 anos ao seu lado meu amor 💛</h1>
+<p>11/02 – 3 anos de uma história que eu escolho viver eternamente </p>
+
+<button onclick="mostrarMensagem()">💌 Mensagem Surpresa</button>
+<button onclick="explodirEmoji()">✨ Clique aqui</button>
+<button onclick="tocarMusica()">🎶 Tocar Música</button>
+
+<div class="mensagem" id="mensagem">
+    Amor, esses 3 anos ao seu lado são a prova de que tudo vale a pena quando é com você.
+    Obrigado por ser meu lar, meu sorriso, meu eterno amor. Saiba que voce sempre podera contar comigo e que sempre estarei ao seu lado, obrigado por tudo meu amorzinho, eu te amo! 💛
+</div>
+
+<!-- 🎵 Música -->
+<audio id="musica" loop>
+    <source src="https://files.catbox.moe/7x8l6k.mp3" type="audio/mpeg">
+</audio>
+
+<!-- 📸 GALERIA (adicione quantas fotos quiser aqui) -->
+<div class="galeria">
+    <img src="WhatsApp Image 2026-02-10 at 19.02.42.jpeg">
+    <img src="WhatsApp Image 2026-02-10 at 19.02.43 (1).jpeg">
+    <img src="WhatsApp Image 2026-02-10 at 19.02.43.jpeg">
+    <img src="WhatsApp Image 2026-02-10 at 19.02.44.jpeg">
+</div>
+
+<script>
+function mostrarMensagem() {
+    const msg = document.getElementById("mensagem");
+    msg.style.display = msg.style.display === "block" ? "none" : "block";
+}
+
+function tocarMusica() {
+    document.getElementById("musica").play();
+}
+
+function explodirEmoji() {
+    const emojis = ["💛","✨","😍","💕","🥰","💫"];
+    for (let i = 0; i < 15; i++) {
+        let e = document.createElement("div");
+        e.className = "emoji";
+        e.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+        e.style.left = Math.random() * 100 + "vw";
+        e.style.animationDuration = (Math.random() * 3 + 4) + "s";
+        document.body.appendChild(e);
+
+        setTimeout(() => e.remove(), 6000);
+    }
+}
+</script>
+
+</body>
+</html>
