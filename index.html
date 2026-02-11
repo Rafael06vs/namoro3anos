@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>3 Anos de namoro ❤️</title>
+
+<style>
+body {
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: white;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* OVERLAY */
+.overlay {
+    position: fixed;
+    inset: 0;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.overlay button {
+    background: white;
+    color: #ff4f81;
+    border: none;
+    padding: 18px 35px;
+    font-size: 1.1em;
+    border-radius: 30px;
+    cursor: pointer;
+}
+
+.container {
+    padding: 40px 20px;
+    opacity: 0;
+    transition: opacity 1.2s;
+}
+
+.container.mostrar {
+    opacity: 1;
+}
+
+h1 {
+    font-size: 2.4em;
+}
+
+/* CARDS */
+.cards {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin: 50px 0;
+}
+
+.card {
+    width: 200px;
+    height: 280px;
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.card-inner {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.card.virado .card-inner {
+    transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+    backface-visibility: hidden;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-back {
+    background: rgba(255,255,255,0.9);
+    color: #ff4f81;
+    transform: rotateY(180deg);
+    font-size: 1em;
+}
+
+/* BOTÕES */
+button {
+    background: white;
+    color: #ff4f81;
+    border: none;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.1);
+}
+
+/* HISTÓRIA */
+.historia {
+    display: none;
+    margin: 40px auto;
+    max-width: 650px;
+    font-size: 1.2em;
+}
+
+/* CORAÇÕES */
+.heart {
+    position: fixed;
+    color: red;
+    font-size: 20px;
+    animation: float 4s linear infinite;
+}
+
+@keyframes float {
+    from { bottom: -10px; opacity: 1; }
+    to { bottom: 100%; opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- TELA INICIAL -->
+<div class="overlay" id="overlay">
+    <h2>Coloque o som ❤️</h2>
+    <button onclick="entrar()">Um pedacinho da nossa história</button>
+</div>
+
+<!-- MÚSICA -->
+<audio id="musica" loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3">
+</audio>
+
+<div class="container" id="site">
+    <h1>Feliz 3 anos meu amooorrr ❤️</h1>
+    <p>Desde 11 de fevereiro de 2023, escrevendo a nossa história juntos.</p>
+
+    <!-- CARDS -->
+    <div class="cards">
+
+        <div class="card" onclick="virar(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="WhatsApp Image 2026-02-10 at 21.06.26.jpeg">
+                </div>
+                <div class="card-back">
+                    Nosso começo kkkkk, desde ali eu já sabia que era você 💕
+                </div>
+            </div>
+        </div>
+
+        <div class="card" onclick="virar(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="WhatsApp Image 2026-02-10 at 21.06.26 (1).jpeg">
+                </div>
+                <div class="card-back">
+                    Cada momento com você virou memória boa pra guardar pra sempre ✨
+                </div>
+            </div>
+        </div>
+
+        <div class="card" onclick="virar(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="WhatsApp Image 2026-02-10 at 21.06.26 (2).jpeg">
+                </div>
+                <div class="card-back">
+                    Você é meu sorriso fácil, meu abraço seguro e meu lar 🥰
+                </div>
+            </div>
+        </div>
+
+        <div class="card" onclick="virar(this)">
+            <div class="card-inner">
+                <div class="card-front">
+                    <img src="WhatsApp Image 2026-02-10 at 21.06.27.jpeg">
+                </div>
+                <div class="card-back">
+                    Três anos… e eu escolheria você em todas as vidas 💫
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- BOTÃO HISTÓRIA -->
+    <button onclick="mostrarHistoria()">📖 Nossa História</button>
+
+    <div class="historia" id="historia">
+      11/02/2023, o dia que tomei a melhor decisão da minha vida, a decisão que mudou a minha vida para todo o sempre, a escolha de te amar pelo resto da minha vida! Uma mistura de frio na barriga, medo, ansiedade, tudo junto e misturado, mas sempre com um sentimento maior, o amor. Saiba que eu te amo mais que tudo vidinha, que voce é o amor da minha vida, a pessoa que eu quero casar e construir uma familia. EU TE AMO!❤️
+    </div>
+</div>
+
+<script>
+const musica = document.getElementById("musica");
+
+function entrar() {
+    musica.play();
+    document.getElementById("overlay").style.display = "none";
+    document.getElementById("site").classList.add("mostrar");
+}
+
+function virar(card) {
+    card.classList.toggle("virado");
+}
+
+function mostrarHistoria() {
+    const h = document.getElementById("historia");
+    h.style.display = h.style.display === "block" ? "none" : "block";
+}
+</script>
+
+</body>
+</html>
